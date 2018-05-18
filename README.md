@@ -1,7 +1,8 @@
 kayako-cleaner
 ==============
 
-Script allows you to purge old data from kayako database (Kayako helpdesk solution, http://kayako.com/).
+Script allows you to purge old data from kayako database 
+
 
 ### Usage
 Usage is pretty easy, you have to run something like this:
@@ -11,14 +12,10 @@ Usage is pretty easy, you have to run something like this:
 
 ### Configuration 
 
-By default this script removes all tickets **older than 90 days**. The point is in editing the query that collects ticket 
-ids, so if you want any complex criteria - write it here: 
+By default this script removes all attachments **older than 90 days**. The point is in editing the threshold value that collects attachments, so if you want to increase or decrease the number of days - change this line: 
 
-```sql
-    INSERT INTO ticketids(ticketid) 
-    SELECT ticketid FROM swtickets WHERE (dateline + (86400 * 90) < UNIX_TIMESTAMP(NOW()));
+```
+SET @date_threshold = 86400 * 90;
 ```  
 
-### Purge all tickets in trash
-
-Run the clean-trash.sql script  
+ 
